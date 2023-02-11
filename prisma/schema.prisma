@@ -9,3 +9,11 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model Material {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String   @unique
+  description String?  @default("")
+  tags        String[] @default([])
+  img         String?  @default("")
+}
